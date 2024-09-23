@@ -3,8 +3,8 @@
 import { signOut } from '@/auth';
 import { authRoutes } from '@/routes';
 
-export async function logout() {
+export async function logout(redirectTo?: string) {
     await signOut({
-        redirectTo: authRoutes.SIGN_IN,
+        redirectTo: redirectTo || authRoutes.SIGN_IN,
     });
 }

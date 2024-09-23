@@ -43,7 +43,6 @@ export default function SignInForm() {
     function onSubmit(values: z.infer<typeof signInSchema>) {
         startTransition(async () => {
             login(values).then(data => {
-                setSuccess(data.success);
                 setError(data.error);
             });
         });
