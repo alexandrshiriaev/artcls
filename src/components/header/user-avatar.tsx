@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 import { Skeleton } from '@/components/shadcnui/skeleton';
-import { cn } from '@/lib/utils';
 
 interface UserAvatarProps {
     src?: string | null;
