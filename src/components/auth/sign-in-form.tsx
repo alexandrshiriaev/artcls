@@ -73,6 +73,7 @@ export default function SignInForm() {
                                     <Input
                                         disabled={isPending}
                                         placeholder="mycoolpassword2000"
+                                        type="password"
                                         {...field}
                                     />
                                 </FormControl>
