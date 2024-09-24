@@ -8,7 +8,7 @@ export default function LandingHeaderButtons() {
             <Button variant={'ghost'} asChild>
                 <Link href={authRoutes.SIGN_IN}>Войти</Link>
             </Button>
-            <Button>
+            <Button asChild>
                 <Link href={authRoutes.SIGN_UP}>Начать</Link>
             </Button>
         </div>

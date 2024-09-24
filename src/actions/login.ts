@@ -44,7 +44,7 @@ export async function login(values: z.infer<typeof signInSchema>) {
     return { success: 'Вы вошли в аккаунт' };
 }
 
-export async function loginWithProvider(provider: 'yandex' | 'github') {
+export async function loginWithProvider(provider: 'github') {
     await signIn(provider, {
         redirectTo: DEFAULT_LOG_IN_REDIRECT,
     });

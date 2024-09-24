@@ -8,8 +8,6 @@ declare global {
             AUTH_SECRET: string;
             AUTH_GITHUB_ID: string;
             AUTH_GITHUB_SECRET: string;
-            AUTH_YANDEX_ID: string;
-            AUTH_YANDEX_SECRET: string;
         }
     }
 }
