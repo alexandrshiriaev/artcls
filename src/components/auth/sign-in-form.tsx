@@ -13,20 +13,12 @@ import {
 import { Input } from '@/components/shadcnui/input';
 import { Button } from '@/components/shadcnui/button';
 import { signInSchema } from '@/lib/schemas/sign-in-schema';
-import { useState, useTransition } from 'react';
+import { Suspense, useState, useTransition } from 'react';
 import { login } from '@/actions/login';
-import { useSearchParams } from 'next/navigation';
-import { Alert, AlertDescription } from '@/components/shadcnui/alert';
-import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import * as React from 'react';
+import AuthFormAlert from '@/components/auth/auth-form-alert';
 
 export default function SignInForm() {
-    const searchParams = useSearchParams();
-    const urlError =
-        searchParams.get('error') === 'OAuthAccountNotLinked'
-            ? 'Войдите в аккаунт с помощью сервиса, которым вы в первый раз авторизировались'
-            : '';
-
     const form = useForm<z.infer<typeof signInSchema>>({
         resolver: zodResolver(signInSchema),
         defaultValues: {
@@ -37,7 +29,7 @@ export default function SignInForm() {
 
     const [isPending, startTransition] = useTransition();
 
-    const [error, setError] = useState<string | undefined>(urlError);
+    const [error, setError] = useState<string | undefined>('');
 
     function onSubmit(values: z.infer<typeof signInSchema>) {
         startTransition(async () => {
@@ -88,14 +80,9 @@ export default function SignInForm() {
                             </FormItem>
                         )}
                     />
-                    {error && (
-                        <Alert variant="destructive">
-                            <AlertDescription className="flex gap-x-2">
-                                <HiOutlineExclamationCircle className="h-5 w-5 text-destructive" />
-                                {error}
-                            </AlertDescription>
-                        </Alert>
-                    )}
+                    <Suspense>
+                        <AuthFormAlert error={error} />
+                    </Suspense>
                 </div>
                 <Button
                     disabled={isPending}

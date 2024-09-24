@@ -13,12 +13,10 @@ import {
 import { Input } from '@/components/shadcnui/input';
 import { Button } from '@/components/shadcnui/button';
 import { clientSignUpSchema } from '@/lib/schemas/sign-up-schema';
-import { useState, useTransition } from 'react';
+import { Suspense, useState, useTransition } from 'react';
 import { register } from '@/actions/register';
-import { Alert, AlertDescription } from '@/components/shadcnui/alert';
-import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import * as React from 'react';
-import { HiOutlineCheckCircle } from 'react-icons/hi2';
+import AuthFormAlert from '@/components/auth/auth-form-alert';
 
 export default function SignUpForm() {
     const form = useForm<z.infer<typeof clientSignUpSchema>>({
@@ -119,22 +117,9 @@ export default function SignUpForm() {
                             </FormItem>
                         )}
                     />
-                    {error && (
-                        <Alert key="alert" variant="destructive">
-                            <AlertDescription className="flex gap-x-2">
-                                <HiOutlineExclamationCircle className="h-5 w-5 text-destructive" />
-                                {error}
-                            </AlertDescription>
-                        </Alert>
-                    )}
-                    {success && (
-                        <Alert key="alert">
-                            <AlertDescription className="flex gap-x-2">
-                                <HiOutlineCheckCircle className="h-5 w-5 text-emerald-500" />
-                                {success}
-                            </AlertDescription>
-                        </Alert>
-                    )}
+                    <Suspense>
+                        <AuthFormAlert error={error} success={success} />
+                    </Suspense>
                 </div>
                 <Button
                     disabled={isPending}
