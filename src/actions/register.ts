@@ -20,7 +20,9 @@ export async function register(values: z.infer<typeof serverSignUpSchema>) {
     if (existingUser)
         return { error: 'Пользователь с таким email уже существует' };
 
-    await createUser({ email, name, password: hashedPassword });
+    const username = email.split('@')[0];
+    // TODO: check if username is not already taken
+    await createUser({ email, name, password: hashedPassword, username });
 
     return { success: 'Вы успешно зарегистрировались' };
 }

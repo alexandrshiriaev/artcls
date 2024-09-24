@@ -14,6 +14,7 @@ import {
 
 import { cn } from '@/lib/utils';
 import { Label } from '@/components/shadcnui/label';
+import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 const Form = FormProvider;
 
@@ -159,11 +160,12 @@ const FormMessage = React.forwardRef<
             ref={ref}
             id={formMessageId}
             className={cn(
-                'text-[0.8rem] font-medium text-destructive',
+                'text-[0.8rem] flex gap-2 items-center font-medium text-destructive',
                 className,
             )}
             {...props}
         >
+            <HiOutlineExclamationCircle className="h-5 w-5 text-destructive" />
             {body}
         </p>
     );

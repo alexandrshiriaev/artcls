@@ -8,8 +8,8 @@ export default async function HeaderBtns() {
     const isLoggedIn = !!session?.user;
 
     return (
-        <div className="flex items-center gap-6">
-            <div className="flex items-center gap-4">
+        <div className="flex items-center gap-x-6">
+            <div className="flex items-center gap-x-4">
                 <Button variant="ghost" className="flex gap-x-2 p-0">
                     <HiOutlinePencilSquare className="w-6 h-6" />
                     <span className="flex">Написать</span>

@@ -18,7 +18,7 @@ export default async function ProfileMenu() {
         <DropdownMenu>
             <DropdownMenuTrigger className="outline-0">
                 <UserAvatar
-                    alt={session.user?.name || ''}
+                    alt={session.user?.name}
                     src={session.user?.image}
                 />
             </DropdownMenuTrigger>

@@ -10,12 +10,12 @@ export default function LandingPage() {
         <div className="h-screen flex flex-col">
             <LandingHeader />
             <main className="flex-grow flex items-center">
-                <div className="max-w-screen-xl flex-grow mx-auto">
-                    <h1 className="text-6xl font-medium">
+                <div className="container flex-grow mx-auto">
+                    <h1 className="text-4xl md:text-6xl font-medium">
                         Делитесь идеями. <br />
                         Вдохновляйте мир.
                     </h1>
-                    <p className="text-2xl max-w-[410px] mt-4">
+                    <p className="text-xl sm:text-2xl max-w-[410px] mt-4">
                         Пишите, читайте и обсуждайте идеи с миллионами
                         единомышленников.
                     </p>

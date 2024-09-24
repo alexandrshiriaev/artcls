@@ -13,12 +13,12 @@ import {
 import { Input } from '@/components/shadcnui/input';
 import { Button } from '@/components/shadcnui/button';
 import { signInSchema } from '@/lib/schemas/sign-in-schema';
-import Link from 'next/link';
 import { useState, useTransition } from 'react';
 import { login } from '@/actions/login';
-import FormResponse from '@/components/auth/form-response';
-import SocialsButtons from '@/components/auth/socials-btns';
 import { useSearchParams } from 'next/navigation';
+import { Alert, AlertDescription } from '@/components/shadcnui/alert';
+import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import * as React from 'react';
 
 export default function SignInForm() {
     const searchParams = useSearchParams();
@@ -37,70 +37,74 @@ export default function SignInForm() {
 
     const [isPending, startTransition] = useTransition();
 
-    const [success] = useState<string | undefined>('');
-    const [error, setError] = useState<string | undefined>('');
+    const [error, setError] = useState<string | undefined>(urlError);
 
     function onSubmit(values: z.infer<typeof signInSchema>) {
         startTransition(async () => {
             login(values).then(data => {
-                setError(data.error);
+                if (data.error) {
+                    setError(data.error);
+                }
             });
         });
     }
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Email</FormLabel>
-                            <FormControl>
-                                <Input
-                                    disabled={isPending}
-                                    placeholder="user@artcls.com"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+                <div className="space-y-6">
+                    <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        disabled={isPending}
+                                        placeholder="alexandr.alexandrov@artcls.com"
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
 
-                <FormField
-                    control={form.control}
-                    name="password"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Пароль</FormLabel>
-                            <FormControl>
-                                <Input
-                                    disabled={isPending}
-                                    placeholder="Введите пароль..."
-                                    type="password"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
+                    <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Пароль</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        disabled={isPending}
+                                        placeholder="mycoolpassword2000"
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    {error && (
+                        <Alert variant="destructive">
+                            <AlertDescription className="flex gap-x-2">
+                                <HiOutlineExclamationCircle className="h-5 w-5 text-destructive" />
+                                {error}
+                            </AlertDescription>
+                        </Alert>
                     )}
-                />
-                <FormResponse type={success ? 'success' : 'error'}>
-                    {success || error || urlError}
-                </FormResponse>
-                <Button disabled={isPending} className="w-full" type="submit">
+                </div>
+                <Button
+                    disabled={isPending}
+                    className="w-full mt-8"
+                    type="submit"
+                >
                     Войти
                 </Button>
-                <p className="text-sm">
-                    Впервые на Artcls?
-                    <Button variant="link" asChild>
-                        <Link href="/auth/signup">Создать аккаунт</Link>
-                    </Button>
-                </p>
             </form>
-            <SocialsButtons />
         </Form>
     );
 }

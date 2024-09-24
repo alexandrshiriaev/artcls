@@ -1,13 +1,20 @@
+import Link from 'next/link';
+import { publicRoutes } from '@/routes';
+import Logo from '@/components/logo';
+
 export default function AuthLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        <main>
-            <div className="max-w-xl mx-auto mt-16 border p-16 rounded-3xl">
-                {children}
-            </div>
-        </main>
+        <>
+            <header className="flex justify-center items-center py-4">
+                <Link href={publicRoutes.WELCOME}>
+                    <Logo />
+                </Link>
+            </header>
+            <main className="container">{children}</main>
+        </>
     );
 }

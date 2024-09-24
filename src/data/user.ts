@@ -5,16 +5,19 @@ export async function createUser({
     email,
     name,
     password,
+    username,
 }: {
     email: string;
     name: string;
     password: string;
+    username: string;
 }) {
     await prisma.user.create({
         data: {
             email,
             name,
             password,
+            username,
         },
     });
 }
