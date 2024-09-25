@@ -25,6 +25,7 @@ export const privateRoutes = {
  */
 export const publicRoutes = {
     WELCOME: '/welcome',
+    PROFILE: `/profile`,
 };
 
 export const DEFAULT_LOG_IN_REDIRECT = '/';

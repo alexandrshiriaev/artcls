@@ -1,5 +1,7 @@
-import Header from '@/components/header';
-
 export default async function Home() {
-    return <Header />;
+    return (
+        <main className="container">
+            <h2>Main page</h2>
+        </main>
+    );
 }

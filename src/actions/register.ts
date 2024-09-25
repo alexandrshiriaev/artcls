@@ -2,9 +2,9 @@
 
 import { z } from 'zod';
 import { hash } from 'bcrypt-ts';
-
+import { v4 as uuidv4 } from 'uuid';
 import { serverSignUpSchema } from '@/lib/schemas/sign-up-schema';
-import { createUser, findUserByEmail } from '@/data/user';
+import { createUser, findUserByEmail, findUserByUsername } from '@/data/user';
 
 export async function register(values: z.infer<typeof serverSignUpSchema>) {
     const validationRes = serverSignUpSchema.safeParse(values);
@@ -15,13 +15,19 @@ export async function register(values: z.infer<typeof serverSignUpSchema>) {
     const { email, password, name } = validationRes.data;
     const hashedPassword = await hash(password, 12);
 
-    const existingUser = await findUserByEmail(email);
+    let existingUser = await findUserByEmail(email);
 
     if (existingUser)
         return { error: 'Пользователь с таким email уже существует' };
 
-    const username = email.split('@')[0];
-    // TODO: check if username is not already taken
+    let username = email.split('@')[0];
+
+    existingUser = await findUserByUsername(username);
+
+    if (existingUser) {
+        username += `-${uuidv4().substring(0, 4)}`;
+    }
+
     await createUser({ email, name, password: hashedPassword, username });
 
     return { success: 'Вы успешно зарегистрировались' };

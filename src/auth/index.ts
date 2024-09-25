@@ -4,8 +4,10 @@ import { prisma } from '@/lib/clients';
 import authConfig from '@/auth/config';
 import Credentials from '@auth/core/providers/credentials';
 import { signInSchema } from '@/lib/schemas/sign-in-schema';
-import { findUserByEmail, findUserById } from '@/data/user';
+import { findUserByEmail, findUserById, findUserByUsername } from '@/data/user';
 import { compare } from 'bcrypt-ts';
+import GitHub from '@auth/core/providers/github';
+import { v4 as uuidv4 } from 'uuid';
 
 declare module 'next-auth' {
     interface Session {
@@ -24,6 +26,25 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     ...authConfig,
     providers: [
         ...authConfig.providers,
+        GitHub({
+            async profile(profile) {
+                let username = profile.email?.split('@')[0] || profile.login;
+
+                const existingUser = await findUserByUsername(username);
+
+                if (existingUser) {
+                    username += `-${uuidv4().substring(0, 4)}`;
+                }
+
+                return {
+                    id: profile.id.toString(),
+                    name: profile.name ?? profile.login,
+                    email: profile.email,
+                    image: profile.avatar_url,
+                    username,
+                };
+            },
+        }),
         Credentials({
             async authorize(credentials) {
                 const validationRes = signInSchema.safeParse(credentials);

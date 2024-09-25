@@ -94,3 +94,13 @@ body {
         @apply bg-background text-foreground;
     }
 }
+
+@layer base {
+    h1 {
+        @apply text-4xl md:text-6xl font-medium;
+    }
+
+    h2 {
+        @apply text-3xl md:text-5xl font-medium;
+    }
+}

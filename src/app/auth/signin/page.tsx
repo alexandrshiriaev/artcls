@@ -7,7 +7,7 @@ export default function SignInPage() {
     return (
         <>
             <div className="text-start xs:text-center mt-8">
-                <h1 className="text-3xl">С возвращением!</h1>
+                <h2>С возвращением!</h2>
                 <p className="text-muted-foreground mt-2">
                     Введите свои учётные данные или выберите удобный Вам способ
                     авторизации.

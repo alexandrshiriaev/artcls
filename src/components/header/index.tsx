@@ -1,12 +1,20 @@
 import Logo from '@/components/logo';
-import HeaderBtns from '@/components/header/header-btns';
+import HeaderButtons from '@/components/header/header-buttons';
 
-export default function Header() {
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { privateRoutes } from '@/routes';
+
+type HeaderProps = React.HTMLProps<HTMLDivElement>;
+
+export default function Header(props: HeaderProps) {
     return (
-        <header className="py-4">
+        <header {...props} className={cn(['py-4 border-b', props.className])}>
             <div className="container flex justify-between items-center">
-                <Logo />
-                <HeaderBtns />
+                <Link href={privateRoutes.HOME}>
+                    <Logo />
+                </Link>
+                <HeaderButtons />
             </div>
         </header>
     );

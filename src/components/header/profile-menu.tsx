@@ -5,8 +5,10 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/shadcnui/dropdown-menu';
-import UserAvatar from '@/components/header/user-avatar';
+import UserAvatar from '@/components/user-avatar';
 import LogoutButton from '@/components/header/logout-btn';
+import Link from 'next/link';
+import { publicRoutes } from '@/routes';
 
 export default async function ProfileMenu() {
     const session = await auth();
@@ -23,6 +25,13 @@ export default async function ProfileMenu() {
                 />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
+                <DropdownMenuItem asChild>
+                    <Link
+                        href={`${publicRoutes.PROFILE}/@${session?.user.username}`}
+                    >
+                        Мой профиль
+                    </Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                     <LogoutButton />
                 </DropdownMenuItem>

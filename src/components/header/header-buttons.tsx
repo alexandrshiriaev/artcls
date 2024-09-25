@@ -3,7 +3,7 @@ import ProfileMenu from '@/components/header/profile-menu';
 import { Button } from '@/components/shadcnui/button';
 import { HiOutlineBell, HiOutlinePencilSquare } from 'react-icons/hi2';
 
-export default async function HeaderBtns() {
+export default async function HeaderButtons() {
     const session = await auth();
     const isLoggedIn = !!session?.user;
 
