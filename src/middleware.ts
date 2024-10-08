@@ -14,7 +14,7 @@ export default auth(req => {
     const isLoggedIn = !!req.auth?.user;
     const nextUrl = req.nextUrl.pathname;
 
-    if (nextUrl === privateRoutes.HOME && !isLoggedIn) {
+    if (Object.values(privateRoutes).includes(nextUrl) && !isLoggedIn) {
         return NextResponse.redirect(new URL(publicRoutes.WELCOME, req.url));
     }
 

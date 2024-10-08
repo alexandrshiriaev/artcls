@@ -1,4 +1,4 @@
-import Logo from '@/components/logo';
+import Logo from '../ui/logo';
 import HeaderButtons from '@/components/header/header-buttons';
 
 import { cn } from '@/lib/utils';

@@ -1,7 +1,7 @@
 'use client';
 
 import LandingHeader from '@/components/landing/header';
-import { Button } from '@/components/shadcnui/button';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { authRoutes } from '@/routes';
 

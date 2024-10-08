@@ -1,4 +1,4 @@
-import { Button } from '@/components/shadcnui/button';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { authRoutes } from '@/routes';
 

@@ -9,12 +9,12 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '@/components/shadcnui/form';
-import { Input } from '@/components/shadcnui/input';
-import { Button } from '@/components/shadcnui/button';
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { clientSignUpSchema } from '@/lib/schemas/sign-up-schema';
 import { Suspense, useState, useTransition } from 'react';
-import { register } from '@/actions/register';
+import { register } from '@/actions/auth/register';
 import * as React from 'react';
 import AuthFormAlert from '@/components/auth/auth-form-alert';
 

@@ -1,8 +1,8 @@
 'use client';
 
-import { Button } from '@/components/shadcnui/button';
+import { Button } from '@/components/ui/button';
 import { FaGithub } from 'react-icons/fa';
-import { loginWithProvider } from '@/actions/login';
+import { loginWithProvider } from '@/actions/auth/login';
 
 interface SocialsAuthButtonsProps {
     page: 'signin' | 'signup';

@@ -1,6 +1,6 @@
 'use client';
-import { Button } from '@/components/shadcnui/button';
-import { logout } from '@/actions/logout';
+import { Button } from '@/components/ui/button';
+import { logout } from '@/actions/auth/logout';
 import { usePathname } from 'next/navigation';
 
 export default function LogoutButton() {

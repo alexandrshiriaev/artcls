@@ -1,4 +1,4 @@
-import { Alert, AlertDescription } from '@/components/shadcnui/alert';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { HiOutlineCheckCircle } from 'react-icons/hi2';
 import * as React from 'react';

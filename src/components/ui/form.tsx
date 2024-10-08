@@ -13,7 +13,7 @@ import {
 } from 'react-hook-form';
 
 import { cn } from '@/lib/utils';
-import { Label } from '@/components/shadcnui/label';
+import { Label } from '@/components/ui/label';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 const Form = FormProvider;

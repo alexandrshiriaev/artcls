@@ -1,5 +1,5 @@
 import SignUpForm from '@/components/auth/sign-up-form';
-import { Button } from '@/components/shadcnui/button';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import SocialsAuthButtons from '@/components/auth/socials-auth-btns';
 

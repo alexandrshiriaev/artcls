@@ -18,6 +18,7 @@ export const authRoutes = {
  */
 export const privateRoutes = {
     HOME: '/',
+    NEW_STORY: '/new-story',
 };
 
 /**

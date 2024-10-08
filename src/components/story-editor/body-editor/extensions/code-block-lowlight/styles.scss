@@ -1,0 +1,61 @@
+.tiptap {
+  pre {
+    @apply bg-gray-100 border border-gray-200 rounded-lg text-gray-900 my-0 px-4 py-4 overflow-x-auto;
+    @apply text-lg leading-6;
+    font-family: var('--font-code'), 'Monaco', 'Courier New', monospace;
+
+    code {
+      @apply bg-transparent text-inherit p-0;
+    }
+
+    .hljs-comment,
+    .hljs-quote {
+      @apply text-gray-500 italic;
+    }
+
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-attribute,
+    .hljs-tag,
+    .hljs-name,
+    .hljs-regexp,
+    .hljs-link,
+    .hljs-selector-id,
+    .hljs-selector-class {
+      @apply text-purple-600;
+    }
+
+    .hljs-number,
+    .hljs-meta,
+    .hljs-built_in,
+    .hljs-literal,
+    .hljs-type,
+    .hljs-params {
+      @apply text-blue-600;
+    }
+
+    .hljs-string,
+    .hljs-symbol,
+    .hljs-bullet {
+      @apply text-green-600;
+    }
+
+    .hljs-title,
+    .hljs-section {
+      @apply text-yellow-600;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag {
+      @apply text-red-600;
+    }
+
+    .hljs-emphasis {
+      @apply italic;
+    }
+
+    .hljs-strong {
+      @apply font-semibold;
+    }
+  }
+}
