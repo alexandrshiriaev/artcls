@@ -1,8 +1,10 @@
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useSearchParams } from 'next/navigation';
+
+import * as React from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { HiOutlineCheckCircle } from 'react-icons/hi2';
-import * as React from 'react';
-import { useSearchParams } from 'next/navigation';
+
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 interface AuthFormAlertProps {
     success?: string;

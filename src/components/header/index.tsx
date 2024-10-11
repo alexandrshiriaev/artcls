@@ -1,9 +1,10 @@
-import Logo from '../ui/logo';
-import HeaderButtons from '@/components/header/header-buttons';
-
-import { cn } from '@/lib/utils';
 import Link from 'next/link';
+
+import HeaderButtons from '@/components/header/header-buttons';
+import { cn } from '@/lib/utils';
 import { privateRoutes } from '@/routes';
+
+import Logo from '../ui/logo';
 
 type HeaderProps = React.HTMLProps<HTMLDivElement>;
 

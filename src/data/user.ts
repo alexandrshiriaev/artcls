@@ -1,4 +1,5 @@
 'use server';
+
 import { prisma } from '@/lib/clients';
 
 export async function createUser({
@@ -44,4 +45,38 @@ export async function findUserByUsername(username: string) {
     });
 
     return user;
+}
+
+export async function findUsersByQuery(query: string) {
+    const usersByUsername = await prisma.user.findMany({
+        where: {
+            username: {
+                contains: query,
+                mode: 'insensitive',
+            },
+        },
+        take: 10,
+    });
+
+    if (usersByUsername.length === 10) {
+        return usersByUsername;
+    }
+
+    const remainingCount = 10 - usersByUsername.length;
+    const usersByName = await prisma.user.findMany({
+        where: {
+            name: {
+                contains: query,
+                mode: 'insensitive',
+            },
+            NOT: {
+                id: {
+                    in: usersByUsername.map(user => user.id),
+                },
+            },
+        },
+        take: remainingCount,
+    });
+
+    return [...usersByUsername, ...usersByName];
 }

@@ -1,7 +1,13 @@
 'use client';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+
 import { zodResolver } from '@hookform/resolvers/zod';
+import * as React from 'react';
+import { Suspense, useState, useTransition } from 'react';
+import { useForm } from 'react-hook-form';
+
+import { register } from '@/actions/auth/register';
+import AuthFormAlert from '@/components/auth/auth-form-alert';
+import { Button } from '@/components/ui/button';
 import {
     Form,
     FormControl,
@@ -11,12 +17,9 @@ import {
     FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 import { clientSignUpSchema } from '@/lib/schemas/sign-up-schema';
-import { Suspense, useState, useTransition } from 'react';
-import { register } from '@/actions/auth/register';
-import * as React from 'react';
-import AuthFormAlert from '@/components/auth/auth-form-alert';
+
+import type { z } from 'zod';
 
 export default function SignUpForm() {
     const form = useForm<z.infer<typeof clientSignUpSchema>>({

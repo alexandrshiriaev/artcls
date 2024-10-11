@@ -1,12 +1,13 @@
 'use server';
 
-import { z } from 'zod';
 import { AuthError } from 'next-auth';
 
 import { signIn } from '@/auth';
-import { signInSchema } from '@/lib/schemas/sign-in-schema';
 import { findUserByEmail } from '@/data/user';
+import { signInSchema } from '@/lib/schemas/sign-in-schema';
 import { DEFAULT_LOG_IN_REDIRECT } from '@/routes';
+
+import type { z } from 'zod';
 
 export async function login(values: z.infer<typeof signInSchema>) {
     const validationRes = signInSchema.safeParse(values);

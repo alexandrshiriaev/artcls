@@ -1,12 +1,14 @@
+import { NextResponse } from 'next/server';
+
+import NextAuth from 'next-auth';
+
+import authConfig from '@/auth/config';
 import {
     authRoutesPrefix,
     DEFAULT_LOG_IN_REDIRECT,
     privateRoutes,
     publicRoutes,
 } from '@/routes';
-import { NextResponse } from 'next/server';
-import NextAuth from 'next-auth';
-import authConfig from '@/auth/config';
 
 const { auth } = NextAuth(authConfig);
 

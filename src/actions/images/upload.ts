@@ -1,8 +1,7 @@
 'use server';
 
-import { uploadImageSchema } from '@/lib/schemas/upload-image-schema';
-
 import { uploadImage as uploadImageToStorage } from '@/data/image';
+import { uploadImageSchema } from '@/lib/schemas/upload-image-schema';
 
 export async function uploadImage(formData: FormData): Promise<
     | {

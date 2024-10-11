@@ -1,10 +1,9 @@
-import {
-    NodeViewProps,
-    NodeViewWrapper,
-    useCurrentEditor,
-} from '@tiptap/react';
+import { NodeViewWrapper, useCurrentEditor } from '@tiptap/react';
 import { useEffect, useTransition } from 'react';
+
 import { ImageZoom } from '@/components/story-editor/body-editor/extensions/captioned-image/image-zoom';
+
+import type { NodeViewProps } from '@tiptap/react';
 
 export default function CaptionedImageNode({
     node,

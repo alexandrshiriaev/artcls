@@ -8,6 +8,7 @@ export async function getUserProfileDetails(username: string) {
     if (!user) return null;
 
     return {
+        id: user.id,
         name: user.name,
         image: user.image,
         username: user.username,

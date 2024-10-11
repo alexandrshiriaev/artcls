@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
-import { getUserProfileDetails } from '@/actions/get-user-profile-details';
+
+import { getUserProfileDetails } from '@/actions/users/get-user-profile-details';
 import UserAvatar from '@/components/user-avatar';
 
 export default async function ProfilePage({

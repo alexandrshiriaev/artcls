@@ -1,6 +1,7 @@
 'use client';
 
 import { EditorProvider } from '@tiptap/react';
+
 import { options } from '@/components/story-editor/title-editor/title-editor-provider-attrs';
 
 interface TitleEditorProps {
@@ -8,5 +9,11 @@ interface TitleEditorProps {
 }
 
 export default function TitleEditor({ editable }: TitleEditorProps) {
-    return <EditorProvider {...options} editable={editable}></EditorProvider>;
+    return (
+        <EditorProvider
+            {...options}
+            editable={editable}
+            content={localStorage.getItem('title-content') || ''}
+        ></EditorProvider>
+    );
 }

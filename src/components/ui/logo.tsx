@@ -1,4 +1,5 @@
 import { Playfair } from 'next/font/google';
+
 import { cn } from '@/lib/utils';
 
 const playfair = Playfair({

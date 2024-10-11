@@ -1,7 +1,13 @@
 'use client';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+
 import { zodResolver } from '@hookform/resolvers/zod';
+import * as React from 'react';
+import { Suspense, useState, useTransition } from 'react';
+import { useForm } from 'react-hook-form';
+
+import { login } from '@/actions/auth/login';
+import AuthFormAlert from '@/components/auth/auth-form-alert';
+import { Button } from '@/components/ui/button';
 import {
     Form,
     FormControl,
@@ -11,12 +17,9 @@ import {
     FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 import { signInSchema } from '@/lib/schemas/sign-in-schema';
-import { Suspense, useState, useTransition } from 'react';
-import { login } from '@/actions/auth/login';
-import * as React from 'react';
-import AuthFormAlert from '@/components/auth/auth-form-alert';
+
+import type { z } from 'zod';
 
 export default function SignInForm() {
     const form = useForm<z.infer<typeof signInSchema>>({

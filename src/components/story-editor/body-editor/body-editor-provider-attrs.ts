@@ -1,16 +1,18 @@
-// @ts-ignore
-import { UseEditorOptions } from '@tiptap/react/src/useEditor';
-// @ts-ignore
-import { Extensions } from '@tiptap/core/src/types';
-import { Editor } from '@tiptap/core';
-import { EditorProps } from '@tiptap/pm/view';
 import Link from '@tiptap/extension-link';
-
-import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
-import FileHandler from '@/components/story-editor/body-editor/extensions/file-handler';
+import StarterKit from '@tiptap/starter-kit';
+
 import CaptionedImage from '@/components/story-editor/body-editor/extensions/captioned-image';
 import CodeBlockLowlight from '@/components/story-editor/body-editor/extensions/code-block-lowlight';
+import FileHandler from '@/components/story-editor/body-editor/extensions/file-handler';
+import Mention from '@/components/story-editor/body-editor/extensions/mention';
+
+import type { Editor } from '@tiptap/core';
+// @ts-ignore
+import type { Extensions } from '@tiptap/core/src/types';
+import type { EditorProps } from '@tiptap/pm/view';
+// @ts-ignore
+import type { UseEditorOptions } from '@tiptap/react/src/useEditor';
 
 const starterKitExtension = StarterKit.configure({
     heading: {
@@ -37,6 +39,8 @@ const fileHandlerExtension = FileHandler;
 
 const codeBlockLowLightExtension = CodeBlockLowlight;
 
+const mentionExtension = Mention;
+
 const linkExtension = Link.configure({
     defaultProtocol: 'https',
     autolink: true,
@@ -56,13 +60,14 @@ export const extensions = [
     captionedImageExtension,
     linkExtension,
     codeBlockLowLightExtension,
+    mentionExtension,
 ] satisfies Extensions;
 
 export const options = {
     editorProps,
     extensions,
     onUpdate({ editor }: { editor: Editor }) {
-        console.log(editor.getHTML());
+        window.localStorage.setItem('body-content', editor.getHTML());
     },
     immediatelyRender: false,
 } satisfies UseEditorOptions;

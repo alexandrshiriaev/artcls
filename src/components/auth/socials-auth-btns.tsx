@@ -1,8 +1,9 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import { FaGithub } from 'react-icons/fa';
+
 import { loginWithProvider } from '@/actions/auth/login';
+import { Button } from '@/components/ui/button';
 
 interface SocialsAuthButtonsProps {
     page: 'signin' | 'signup';

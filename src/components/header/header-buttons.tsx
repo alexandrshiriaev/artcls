@@ -1,10 +1,11 @@
-import { HiOutlineBell, HiOutlinePencilSquare } from 'react-icons/hi2';
 import Link from 'next/link';
 
+import { HiOutlineBell, HiOutlinePencilSquare } from 'react-icons/hi2';
+
 import { auth } from '@/auth';
-import { authRoutes, privateRoutes } from '@/routes';
 import ProfileMenu from '@/components/header/profile-menu';
 import { Button } from '@/components/ui/button';
+import { authRoutes, privateRoutes } from '@/routes';
 
 export default async function HeaderButtons() {
     const session = await auth();

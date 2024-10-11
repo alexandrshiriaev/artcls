@@ -1,8 +1,9 @@
 'use client';
 
+import Link from 'next/link';
+
 import LandingHeader from '@/components/landing/header';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 import { authRoutes } from '@/routes';
 
 export default function LandingPage() {

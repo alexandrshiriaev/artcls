@@ -1,10 +1,12 @@
 'use server';
 
-import { z } from 'zod';
 import { hash } from 'bcrypt-ts';
 import { v4 as uuidv4 } from 'uuid';
-import { serverSignUpSchema } from '@/lib/schemas/sign-up-schema';
+
 import { createUser, findUserByEmail, findUserByUsername } from '@/data/user';
+import { serverSignUpSchema } from '@/lib/schemas/sign-up-schema';
+
+import type { z } from 'zod';
 
 export async function register(values: z.infer<typeof serverSignUpSchema>) {
     const validationRes = serverSignUpSchema.safeParse(values);

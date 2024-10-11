@@ -1,5 +1,6 @@
 import { uploadImage } from '@/actions/images/upload';
-import { Editor } from '@tiptap/core';
+
+import type { Editor } from '@tiptap/core';
 
 function uploadImageHandler(file: File): () => ReturnType<typeof uploadImage> {
     const formData = new FormData();
@@ -35,7 +36,6 @@ function insertImage(
 export default function handleFile(file: File, editor: Editor, pos: number) {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
-    console.log(file);
     fileReader.onload = () =>
         insertImage(
             editor,

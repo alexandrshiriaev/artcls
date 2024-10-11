@@ -1,7 +1,8 @@
 'use client';
 
-import StoryEditor from '@/components/story-editor';
 import { useSearchParams } from 'next/navigation';
+
+import StoryEditor from '@/components/story-editor';
 
 export default function NewStoryPage() {
     const searchParams = useSearchParams();

@@ -1,5 +1,6 @@
-import { NextAuthConfig } from 'next-auth';
 import { authRoutes } from '@/routes';
+
+import type { NextAuthConfig } from 'next-auth';
 
 export default {
     pages: {

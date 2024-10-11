@@ -1,11 +1,11 @@
 'use server';
 
 import { PutObjectCommand, S3ServiceException } from '@aws-sdk/client-s3';
+
 import { s3Client } from '@/lib/clients';
 
 export async function uploadImage(file: File) {
     const filename = file.name.replace(' ', '');
-    console.log(process.env.S3_REGION);
     try {
         await s3Client.send(
             new PutObjectCommand({

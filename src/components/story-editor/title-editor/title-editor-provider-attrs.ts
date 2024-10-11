@@ -1,13 +1,13 @@
+import CharacterCount from '@tiptap/extension-character-count';
 import Document from '@tiptap/extension-document';
 import Heading from '@tiptap/extension-heading';
 import Placeholder from '@tiptap/extension-placeholder';
 import Text from '@tiptap/extension-text';
-import CharacterCount from '@tiptap/extension-character-count';
-// @ts-ignore
-import { UseEditorOptions } from '@tiptap/react/src/useEditor';
-// @ts-ignore
-import { Extensions } from '@tiptap/core/src/types';
-import { EditorProps } from '@tiptap/pm/view';
+
+import type { Editor } from '@tiptap/core'; // @ts-ignore
+import type { Extensions } from '@tiptap/core/src/types';
+import type { EditorProps } from '@tiptap/pm/view'; // @ts-ignore
+import type { UseEditorOptions } from '@tiptap/react/src/useEditor';
 
 const extensions = [
     Document.extend({
@@ -35,5 +35,8 @@ const editorProps = {
 export const options = {
     extensions,
     editorProps,
+    onUpdate({ editor }: { editor: Editor }) {
+        window.localStorage.setItem('title-content', editor.getHTML());
+    },
     immediatelyRender: false,
 } satisfies UseEditorOptions;

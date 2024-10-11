@@ -1,5 +1,6 @@
-import TitleEditor from '@/components/story-editor/title-editor';
 import BodyEditor from '@/components/story-editor/body-editor';
+import TitleEditor from '@/components/story-editor/title-editor';
+
 import '@/components/story-editor/styles.scss';
 
 interface StoryEditorProps {

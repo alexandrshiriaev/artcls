@@ -1,7 +1,9 @@
 'use client';
-import { Button } from '@/components/ui/button';
-import { logout } from '@/actions/auth/logout';
+
 import { usePathname } from 'next/navigation';
+
+import { logout } from '@/actions/auth/logout';
+import { Button } from '@/components/ui/button';
 
 export default function LogoutButton() {
     const pathname = usePathname();

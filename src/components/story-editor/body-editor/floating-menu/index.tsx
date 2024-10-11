@@ -1,11 +1,13 @@
 'use client';
 
-import { Editor } from '@tiptap/core';
 import { FloatingMenu, useCurrentEditor } from '@tiptap/react';
-import { Button } from '@/components/ui/button';
 import { useRef, useState } from 'react';
 import { HiOutlinePlusCircle } from 'react-icons/hi2';
+
+import { Button } from '@/components/ui/button';
 import handleFile from '@/lib/image';
+
+import type { Editor } from '@tiptap/core';
 
 interface FloatingMenuUIProps {
     editor: Editor | null;
@@ -40,8 +42,12 @@ export default function FloatingMenuUI(props: FloatingMenuUIProps) {
                     setIsOpen(false);
                 },
             }}
+            shouldShow={({ editor, state }) =>
+                editor.isActive('paragraph') &&
+                !state.selection.$anchor.node().content.size
+            }
         >
-            <div className="flex gap-x-4 relative left-[-56px]">
+            <div className="flex gap-x-4 relative left-0 lg:left-[-56px]">
                 <Button onClick={toggleMenu} variant="ghost" size="icon">
                     <HiOutlinePlusCircle className="w-10 h-10 stroke-[0.5px]" />
                 </Button>

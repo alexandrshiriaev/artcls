@@ -6,5 +6,39 @@
   "trailingComma": "all",
   "printWidth": 80,
   "tabWidth": 4,
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "endOfLine": "auto",
+  "importOrder": [
+    "^(next/(.*)$)|^(next$)",
+    "next-seo.config",
+    "",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@/(.*)$",
+    "",
+    "^components/(.*)$",
+    "",
+    "^actions/(.*)$",
+    "",
+    "^data/(.*)$",
+    "",
+    "^lib/(.*)$",
+    "",
+    "^assets/(.*)$",
+    "",
+    "^@fontsource/(.*)$",
+    "",
+    "^[./]",
+    "",
+    "<TYPES>"
+  ],
+  "importOrderTypeScriptVersion": "5.0.0",
+  "importOrderParserPlugins": [
+    "typescript",
+    "decorators-legacy",
+    "jsx"
+  ],
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports"
+  ]
 }

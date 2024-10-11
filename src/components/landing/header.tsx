@@ -1,5 +1,6 @@
-import Logo from '../ui/logo';
 import LandingHeaderButtons from '@/components/landing/header-btns';
+
+import Logo from '../ui/logo';
 
 export default function LandingHeader() {
     return (

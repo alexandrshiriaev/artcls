@@ -1,5 +1,6 @@
 import { mergeAttributes, Node } from '@tiptap/core';
 import { ReactNodeViewRenderer } from '@tiptap/react';
+
 import CaptionedImageNode from '@/components/story-editor/body-editor/extensions/captioned-image/captioned-image-node';
 
 declare module '@tiptap/core' {

@@ -1,4 +1,7 @@
+import Link from 'next/link';
+
 import { auth } from '@/auth';
+import LogoutButton from '@/components/header/logout-btn';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -6,8 +9,6 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import UserAvatar from '@/components/user-avatar';
-import LogoutButton from '@/components/header/logout-btn';
-import Link from 'next/link';
 import { publicRoutes } from '@/routes';
 
 export default async function ProfileMenu() {

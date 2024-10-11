@@ -1,4 +1,5 @@
 import { FileHandler as BaseFileHandler } from '@tiptap-pro/extension-file-handler';
+
 import handleFile from '@/lib/image';
 
 const FileHandler = BaseFileHandler.configure({

@@ -1,14 +1,13 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "next/typescript",
-    "plugin:prettier/recommended"
-  ],
-  "rules": {
-    "prettier/prettier": [
-      "error"
+    "extends": [
+        "next/core-web-vitals",
+        "next/typescript",
+        "plugin:prettier/recommended"
     ],
-    "no-unused-vars": "warn",
-    "@typescript-eslint/ban-ts-comment": "off"
-  }
+    "rules": {
+        "prettier/prettier": ["warn"],
+        "no-unused-vars": "warn",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/consistent-type-imports": "error"
+    }
 }

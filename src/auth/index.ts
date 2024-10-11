@@ -1,13 +1,16 @@
-import NextAuth, { DefaultSession } from 'next-auth';
-import { PrismaAdapter } from '@auth/prisma-adapter';
-import { prisma } from '@/lib/clients';
-import authConfig from '@/auth/config';
 import Credentials from '@auth/core/providers/credentials';
-import { signInSchema } from '@/lib/schemas/sign-in-schema';
-import { findUserByEmail, findUserById, findUserByUsername } from '@/data/user';
-import { compare } from 'bcrypt-ts';
 import GitHub from '@auth/core/providers/github';
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import { compare } from 'bcrypt-ts';
+import NextAuth from 'next-auth';
 import { v4 as uuidv4 } from 'uuid';
+
+import authConfig from '@/auth/config';
+import { findUserByEmail, findUserById, findUserByUsername } from '@/data/user';
+import { prisma } from '@/lib/clients';
+import { signInSchema } from '@/lib/schemas/sign-in-schema';
+
+import type { DefaultSession } from 'next-auth';
 
 declare module 'next-auth' {
     interface Session {

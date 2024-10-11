@@ -1,5 +1,5 @@
-import { PrismaClient } from '@prisma/client';
 import { S3Client } from '@aws-sdk/client-s3';
+import { PrismaClient } from '@prisma/client';
 
 function prismaClientSingleton() {
     return new PrismaClient();

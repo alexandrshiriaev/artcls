@@ -1,6 +1,10 @@
 'use client';
-import { useRef, ComponentProps, RefCallback } from 'react';
-import mediumZoom, { Zoom, ZoomOptions } from 'medium-zoom';
+
+import mediumZoom from 'medium-zoom';
+import { useRef } from 'react';
+
+import type { Zoom, ZoomOptions } from 'medium-zoom';
+import type { ComponentProps, RefCallback } from 'react';
 
 type ImageZoomProps = ComponentProps<'img'> & {
     options?: ZoomOptions;

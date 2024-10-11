@@ -1,10 +1,13 @@
 'use client';
-import { Editor } from '@tiptap/core';
 
 import { BubbleMenu, useCurrentEditor } from '@tiptap/react';
-import { Button, ButtonProps } from '@/components/ui/button';
 import { LuBold, LuItalic, LuLink, LuQuote } from 'react-icons/lu';
+
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+
+import type { ButtonProps } from '@/components/ui/button';
+import type { Editor } from '@tiptap/core';
 
 interface BubbleMenuUIProps {
     editor: Editor | null;

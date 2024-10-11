@@ -1,5 +1,6 @@
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+
+import { Button } from '@/components/ui/button';
 import { authRoutes } from '@/routes';
 
 export default function LandingHeaderButtons() {

@@ -1,7 +1,8 @@
-import SignUpForm from '@/components/auth/sign-up-form';
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+
+import SignUpForm from '@/components/auth/sign-up-form';
 import SocialsAuthButtons from '@/components/auth/socials-auth-btns';
+import { Button } from '@/components/ui/button';
 
 export default function SignUpPage() {
     return (
