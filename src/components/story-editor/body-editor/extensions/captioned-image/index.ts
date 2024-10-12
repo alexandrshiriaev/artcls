@@ -69,7 +69,6 @@ const CaptionedImage = Node.create({
                 },
         };
     },
-
     parseHTML() {
         return [{ tag: 'figure' }];
     },
