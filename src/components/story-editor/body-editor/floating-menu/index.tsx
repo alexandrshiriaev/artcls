@@ -1,11 +1,12 @@
 'use client';
 
 import { FloatingMenu, useCurrentEditor } from '@tiptap/react';
-import { useRef, useState } from 'react';
-import { HiOutlinePlusCircle } from 'react-icons/hi2';
+import { useState } from 'react';
 
-import { Button } from '@/components/ui/button';
-import handleFile from '@/lib/image';
+import InsertCodeBlockButton from '@/components/story-editor/body-editor/floating-menu/buttons/insert-codeblock-button';
+import InsertHrButton from '@/components/story-editor/body-editor/floating-menu/buttons/insert-hr-button';
+import InsertImageButton from '@/components/story-editor/body-editor/floating-menu/buttons/insert-image-button';
+import TriggerButton from '@/components/story-editor/body-editor/floating-menu/buttons/trigger-button';
 
 import type { Editor } from '@tiptap/core';
 
@@ -14,25 +15,17 @@ interface FloatingMenuUIProps {
 }
 
 export default function FloatingMenuUI(props: FloatingMenuUIProps) {
+    let { editor } = useCurrentEditor();
+
+    if (!editor) editor = props.editor;
+
     const [isOpen, setIsOpen] = useState(false);
 
     function toggleMenu() {
         setIsOpen(prev => !prev);
     }
 
-    let { editor } = useCurrentEditor();
-
-    const fileInputRef = useRef<HTMLInputElement>(null);
-
-    if (!editor) editor = props.editor;
-
     if (!editor) return;
-
-    function onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
-        const file = event.target?.files?.[0];
-        if (!file || !editor) return;
-        handleFile(file, editor, editor.state.selection.anchor);
-    }
 
     return (
         <FloatingMenu
@@ -47,37 +40,13 @@ export default function FloatingMenuUI(props: FloatingMenuUIProps) {
                 !state.selection.$anchor.node().content.size
             }
         >
-            <div className="flex gap-x-4 relative left-0 lg:left-[-56px]">
-                <Button onClick={toggleMenu} variant="ghost" size="icon">
-                    <HiOutlinePlusCircle className="w-10 h-10 stroke-[0.5px]" />
-                </Button>
+            <div className="flex gap-x-4 relative left-0 lg:left-[-74px] outline-none">
+                <TriggerButton onClick={toggleMenu} open={isOpen} />
                 {isOpen && (
                     <div className="flex gap-x-2">
-                        <Button
-                            onClick={() =>
-                                editor?.chain().toggleCodeBlock().run()
-                            }
-                        >
-                            Блок кода
-                        </Button>
-                        <input
-                            type="file"
-                            multiple={false}
-                            onChange={onFileChange}
-                            ref={fileInputRef}
-                            accept="image/png',image/jpeg,image/webp"
-                            hidden
-                        />
-                        <Button onClick={() => fileInputRef.current?.click()}>
-                            Изображение
-                        </Button>
-                        <Button
-                            onClick={() =>
-                                editor?.chain().setHorizontalRule().run()
-                            }
-                        >
-                            Новая часть
-                        </Button>
+                        <InsertCodeBlockButton />
+                        <InsertImageButton />
+                        <InsertHrButton />
                     </div>
                 )}
             </div>

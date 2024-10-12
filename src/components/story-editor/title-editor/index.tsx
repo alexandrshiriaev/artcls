@@ -13,7 +13,11 @@ export default function TitleEditor({ editable }: TitleEditorProps) {
         <EditorProvider
             {...options}
             editable={editable}
-            content={localStorage.getItem('title-content') || ''}
+            content={
+                typeof window !== 'undefined'
+                    ? localStorage.getItem('title-content')
+                    : ''
+            }
         ></EditorProvider>
     );
 }

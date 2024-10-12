@@ -29,7 +29,10 @@ export default function CaptionedImageNode({
     }, [isUploading, src]);
 
     return (
-        <NodeViewWrapper className="captioned-image relative" as="figure">
+        <NodeViewWrapper
+            className="captioned-image relative flex flex-col items-center"
+            as="figure"
+        >
             {isUploading && (
                 <div className="absolute top-5 left-0 text-muted-foreground text-sm">
                     Загрузка...

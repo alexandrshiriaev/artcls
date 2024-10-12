@@ -50,7 +50,8 @@ const CaptionedImage = Node.create({
             },
             caption: {
                 default: '',
-                parseHTML: element => element.querySelector('p')?.textContent,
+                parseHTML: element =>
+                    element.querySelector('figcaption')?.textContent,
             },
             uploadImageHandler: undefined,
         };

@@ -16,7 +16,11 @@ export default function BodyEditor({ editable }: BodyEditorProps) {
             <EditorProvider
                 {...options}
                 editable={editable}
-                content={localStorage.getItem('body-content') || ''}
+                content={
+                    typeof window !== 'undefined'
+                        ? localStorage.getItem('body-content')
+                        : ''
+                }
             >
                 <FloatingMenu editor={null} />
                 <BubbleMenu editor={null} />
