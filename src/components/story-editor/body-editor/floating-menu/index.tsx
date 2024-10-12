@@ -71,6 +71,13 @@ export default function FloatingMenuUI(props: FloatingMenuUIProps) {
                         <Button onClick={() => fileInputRef.current?.click()}>
                             Изображение
                         </Button>
+                        <Button
+                            onClick={() =>
+                                editor?.chain().setHorizontalRule().run()
+                            }
+                        >
+                            Новая часть
+                        </Button>
                     </div>
                 )}
             </div>

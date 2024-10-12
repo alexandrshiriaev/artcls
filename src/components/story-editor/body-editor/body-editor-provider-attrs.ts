@@ -19,6 +19,11 @@ const starterKitExtension = StarterKit.configure({
         levels: [3, 4],
     },
     codeBlock: false,
+    horizontalRule: {
+        HTMLAttributes: {
+            class: 'block border-0 text-center overflow-visible before:content-["..."] before:inline-block before:text-gray-900 before:ml-2 before:relative before:top-[-30px] before:tracking-[1.6rem] before:font-bold',
+        },
+    },
 });
 
 const placeholderExtension = Placeholder.configure({
@@ -33,6 +38,12 @@ const placeholderExtension = Placeholder.configure({
     },
 });
 
+const linkExtension = Link.configure({
+    defaultProtocol: 'https',
+    autolink: true,
+    openOnClick: 'whenNotEditable',
+});
+
 const captionedImageExtension = CaptionedImage;
 
 const fileHandlerExtension = FileHandler;
@@ -40,12 +51,6 @@ const fileHandlerExtension = FileHandler;
 const codeBlockLowLightExtension = CodeBlockLowlight;
 
 const mentionExtension = Mention;
-
-const linkExtension = Link.configure({
-    defaultProtocol: 'https',
-    autolink: true,
-    openOnClick: 'whenNotEditable',
-});
 
 export const editorProps = {
     attributes: {
