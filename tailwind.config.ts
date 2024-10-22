@@ -17,6 +17,11 @@ const config: Config = {
             },
         },
         extend: {
+            fontFamily: {
+                'story-sans': 'var(--font-story-sans)',
+                'story-serif': 'var(--font-story-serif)',
+                'story-code': 'var(--font-story-code)',
+            },
             colors: {
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',

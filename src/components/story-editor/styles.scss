@@ -1,24 +1,31 @@
 .story-container {
-  @apply max-w-screen-lg mx-auto p-1 lg:p-0.5 mb-16;
+  @apply max-w-screen-md mx-auto px-4 lg:px-1 mb-16;
 }
 
 .prose {
-  @apply max-w-none focus:outline-none;
+  @apply max-w-none focus:outline-none font-story-serif;
   @apply prose-figcaption:text-center;
   @apply prose-img:my-0;
+  @apply prose-headings:font-story-sans
 }
 
 .tiptap {
   p.is-editor-empty:first-child::before,
   h2.is-editor-empty:first-child::before {
-    color: #adb5bd;
+    @apply text-gray-400;
     content: attr(data-placeholder);
     float: left;
     height: 0;
     pointer-events: none;
   }
+
+  p.is-editor-empty.placeholder-hidden:first-child::before {
+    content: none;
+  }
 }
 
-div[contenteditable='true'] .ProseMirror-selectednode figure {
-  @apply outline outline-offset-2 outline-2 outline-emerald-500;
+.ProseMirror-focused {
+  p.is-editor-empty:first-child::before {
+    @apply content-none lg:content-[attr(data-placeholder)];
+  }
 }

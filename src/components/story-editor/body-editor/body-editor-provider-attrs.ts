@@ -28,8 +28,9 @@ const starterKitExtension = StarterKit.configure({
 
 const placeholderExtension = Placeholder.configure({
     placeholder: ({ node }) => {
-        if (node.type.name === 'paragraph')
+        if (node.type.name === 'paragraph') {
             return 'Напишите содержание статьи...';
+        }
 
         if (node.type.name === 'captionedImage')
             return 'Напишите подпись к изображению...';
@@ -54,7 +55,7 @@ const mentionExtension = Mention;
 
 export const editorProps = {
     attributes: {
-        class: 'prose md:prose-lg lg:prose-xl',
+        class: 'prose prose-lg lg:prose-xl',
     },
 } satisfies EditorProps;
 

@@ -34,6 +34,27 @@ export default function FloatingMenuUI(props: FloatingMenuUIProps) {
                 onAfterUpdate() {
                     setIsOpen(false);
                 },
+                onShow() {
+                    if (window !== undefined) {
+                        const element = document.querySelector(
+                            '.tiptap p.is-editor-empty:first-child',
+                        );
+                        if (element) {
+                            element.classList.add('placeholder-hidden');
+                        }
+                        console.log(element);
+                    }
+                },
+                onHide() {
+                    if (window !== undefined) {
+                        const element = document.querySelector(
+                            '.tiptap p.is-editor-empty:first-child',
+                        );
+                        if (element) {
+                            element.classList.remove('placeholder-hidden');
+                        }
+                    }
+                },
             }}
             shouldShow={({ editor, state }) =>
                 editor.isActive('paragraph') &&

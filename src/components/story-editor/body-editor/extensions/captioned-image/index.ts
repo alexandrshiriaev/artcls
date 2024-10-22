@@ -3,6 +3,8 @@ import { ReactNodeViewRenderer } from '@tiptap/react';
 
 import CaptionedImageNode from '@/components/story-editor/body-editor/extensions/captioned-image/captioned-image-node';
 
+import '@/components/story-editor/body-editor/extensions/captioned-image/styles.scss';
+
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         captionedImage: {

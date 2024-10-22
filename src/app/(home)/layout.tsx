@@ -7,7 +7,7 @@ interface HomeLayoutProps {
 export default function HomeLayout({ children }: HomeLayoutProps) {
     return (
         <>
-            <Header className="mb-4" />
+            <Header />
             {children}
         </>
     );

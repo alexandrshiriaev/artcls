@@ -28,7 +28,7 @@ const extensions = [
 
 const editorProps = {
     attributes: {
-        class: 'prose md:prose-lg lg:prose-xl',
+        class: 'prose prose-lg lg:prose-xl',
     },
 } satisfies EditorProps;
 
